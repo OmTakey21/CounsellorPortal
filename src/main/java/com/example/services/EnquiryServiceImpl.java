@@ -3,6 +3,7 @@ package com.example.services;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.BeanUtils;
@@ -49,13 +50,13 @@ public class EnquiryServiceImpl implements EnquiriesServices {
 															   //it will fetch record on the basis of only counsellorId
 		int total=lstEnqs.size();
 		
-		int enrolled=lstEnqs.stream().filter(e-> e.getEnqStatus().equals("ENROLLED")).
+		int enrolled=lstEnqs.stream().filter(e-> e.getEnqStatus().equalsIgnoreCase("ENROLLED")).
 										collect(Collectors.toList()).size();
 		
-		int open=lstEnqs.stream().filter(e->e.getEnqStatus().equals("OPENED"))
+		int open=lstEnqs.stream().filter(e->e.getEnqStatus().equalsIgnoreCase("OPEN"))
 								 .collect(Collectors.toList()).size();
 		
-		int lost=lstEnqs.stream().filter(e->e.getEnqStatus().equals("LOST")).
+		int lost=lstEnqs.stream().filter(e->e.getEnqStatus().equalsIgnoreCase("LOST")).
 								collect(Collectors.toList()).size();
 		
 //		DashboardDto dashDto=new DashboardDto();
@@ -156,7 +157,7 @@ public class EnquiryServiceImpl implements EnquiriesServices {
 		lstEnqs.forEach(e->{
 			EnquiriesDto enqDto=new EnquiriesDto();
 			BeanUtils.copyProperties(e, enqDto);
-			lstEnqsDto.add(enqsDto);
+			lstEnqsDto.add(enqDto);
 		});
 		return lstEnqsDto;
 	}
@@ -183,6 +184,16 @@ public class EnquiryServiceImpl implements EnquiriesServices {
 		EnquiriesDto enqDto=new EnquiriesDto();
 		BeanUtils.copyProperties(enq, enqDto);
 		
+		return enqDto;
+	}
+
+	@Override
+	public EnquiriesDto getById(Long enqId) {
+		Enquiries enqs=enqRepo.findById(enqId).get();
+		
+		EnquiriesDto enqDto=new EnquiriesDto();
+		
+		BeanUtils.copyProperties(enqs, enqDto);
 		return enqDto;
 	}
 }

@@ -11,4 +11,5 @@ public interface EnquiriesServices {
 	public List<EnquiriesDto> viewEnquiries(Long counsellorId);
 	public List<EnquiriesDto> filterEnquiries(EnquiriesDto enqs,Long counsellorId);
 	public EnquiriesDto getEnquiry(Long enqId);
+	public EnquiriesDto getById(Long enqId);
 }

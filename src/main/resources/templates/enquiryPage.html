@@ -58,7 +58,7 @@
                 <label for="enqStatus" class="form-label">Enquiry Status</label>
                 <select th:field="*{enqStatus}" class="form-select" id="enqStatus" required>
                     <option value="" disabled selected>Select Status</option>
-                    <option value="New">New</option>
+                    <option value="Open">New</option>
                     <option value="Enrolled">Enrolled</option>
                     <option value="Lost">Lost</option>
                 </select>
@@ -68,7 +68,7 @@
                 <button type="submit" class="btn btn-primary">Submit Enquiry</button>
                 <a href="/dashboard" class="btn btn-secondary ms-2">Back to Dashboard</a>
             </div>
-
+			<input type="hidden" th:field="*{enqId}" />
         </form>
     </div>
 
