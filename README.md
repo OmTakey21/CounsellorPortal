@@ -59,7 +59,7 @@ MySQL
 IDE (STS)
 Installation Steps
 1) Clone the repository:
-git clone https://github.com/yourusername/counsellor-portal.git
+git clone https:https://github.com/OmTakey21/CounsellorPortal.git
 
 2)Navigate to the project folder:
 cd counsellor-portal
