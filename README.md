@@ -57,3 +57,34 @@ Spring Boot
 MySQL
 
 IDE (STS)
+Installation Steps
+1) Clone the repository:
+git clone https://github.com/yourusername/counsellor-portal.git
+
+2)Navigate to the project folder:
+cd counsellor-portal
+
+3)Set up MySQL database:
+Create a MySQL database (e.g., counsellor_portal).
+
+4)Update the application.properties file in src/main/resources with your MySQL credentials:
+spring.datasource.url=jdbc:mysql://localhost:3306/counsellor_portal
+spring.datasource.username=your_mysql_username
+spring.datasource.password=your_mysql_password
+spring.jpa.hibernate.ddl-auto=update
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+5)Run the application:
+Use your IDE to run the Application.java class (located in src/main/java/com/yourpackage).
+Alternatively, you can build the project using Maven or Gradle and run it from the terminal:
+mvn spring-boot:run
+
+The application should now be running on http://localhost:8080.
+
+How to Use
+Login Page: Access the login page via http://localhost:8080/login. Enter valid credentials to access the portal.
+
+Dashboard: Once logged in, the dashboard will display all the current enquiries. You can add, update, and filter enquiries from here.
+
+📄 License
+This project is licensed under the MIT License - see the LICENSE file for details.
