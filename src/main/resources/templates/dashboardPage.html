@@ -15,12 +15,20 @@
     <div class="container mt-5">
 		
 		<div class="row mb-4">
-		           <div class="col-md-12 text-end">
-		               <a href="/logout" class="btn btn-danger btn-sm">Logout</a> <!-- Logout Button -->
-		               <a href="/enquiries" class="btn btn-info btn-sm ms-2">View Enquiries</a> <!-- View Enquiries Link -->
-		               <a href="/enquiry" class="btn btn-success btn-sm ms-2">Add Enquiry</a> <!-- Add Enquiry Link -->
-		           </div>
-		 </div>
+		    <div class="col-md-12 text-end d-flex justify-content-end gap-2">
+		        <!-- Logout Form with Button -->
+		        <form th:action="@{/logout}" method="get">
+		            <button type="submit" class="btn btn-danger btn-sm">Logout</button>
+		        </form>
+
+		        <!-- View Enquiries Link -->
+		        <a href="/enquiries" class="btn btn-info btn-sm">View Enquiries</a>
+
+		        <!-- Add Enquiry Link -->
+		        <a href="/enquiry" class="btn btn-success btn-sm">Add Enquiry</a>
+		    </div>
+		</div>
+
         <!-- Page Heading -->
         <h1 class="text-center mb-4">Dashboard</h1>
 

@@ -135,15 +135,15 @@ public class EnquiryServiceImpl implements EnquiriesServices {
 		
 		Enquiries entity=new Enquiries();
 		
-		if(enqsDto.getClassMode()!=null && !enqsDto.getClassMode().equals(" ")) {
+		if(enqsDto.getClassMode()!=null && !enqsDto.getClassMode().equals("")) {
 			entity.setClassMode(enqsDto.getClassMode());
 		}
 		
-		if(enqsDto.getCourseName()!=null && !enqsDto.getCourseName().equals(" ")) {
+		if(enqsDto.getCourseName()!=null && !enqsDto.getCourseName().equals("")) {
 			entity.setCourseName(enqsDto.getCourseName());
 		}
 		
-		if(enqsDto.getEnqStatus()!=null && !enqsDto.getEnqStatus().equals(" ")) {
+		if(enqsDto.getEnqStatus()!=null && !enqsDto.getEnqStatus().equals("")) {
 			entity.setEnqStatus(enqsDto.getEnqStatus());
 		}
 		

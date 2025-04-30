@@ -15,8 +15,8 @@
 		<form class="d-flex align-items-end gap-3 mb-4" th:object="${enqDto}" th:action="@{/filter}" method="post">
 		    <div>
 		        <label for="classMode" class="form-label">Class Mode</label>
-		        <select th:field="*{classMode}" class="form-select" id="classMode" required>
-		            <option value="" disabled selected>Select Mode</option>
+		        <select th:field="*{classMode}" class="form-select" id="classMode" >
+		            <option value="" selected>Select Mode</option>
 		            <option value="Online">Online</option>
 		            <option value="Offline">Offline</option>
 		        </select>
@@ -24,8 +24,8 @@
 
 		    <div >
 		        <label for="courseName" class="form-label">Course Name</label>
-		        <select th:field="*{courseName}" class="form-select" id="courseName" required>
-		            <option value="" disabled selected>Select Course</option>
+		        <select th:field="*{courseName}" class="form-select" id="courseName" >
+		            <option value="" selected>Select Course</option>
 		            <option value="Java Fullstack">Java Fullstack</option>
 		            <option value="Python Fullstack">Python Fullstack</option>
 		            <option value="AWS Cloud">AWS Cloud</option>
@@ -37,8 +37,8 @@
 
 		    <div >
 		        <label for="enqStatus" class="form-label">Enquiry Status</label>
-		        <select th:field="*{enqStatus}" class="form-select" id="enqStatus" required>
-		            <option value="" disabled selected>Select Status</option>
+		        <select th:field="*{enqStatus}" class="form-select" id="enqStatus">
+		            <option value="" selected>Select Status</option>
 		            <option value="Open">New</option>
 		            <option value="Enrolled">Enrolled</option>
 		            <option value="Lost">Lost</option>
@@ -78,9 +78,7 @@
 				<td th:text="${enq.classMode}">Class Mode</td>
 				<td th:text="${enq.enqStatus}">Enquiry Status</td>
 				<td >
-					
-						<a th:href="@{/edit}">Edit</a>
-					
+					<a th:href="@{/edit(enqId=${enq.enqId})}">Edit</a>	
 				</td>	
 			</tr>
 		</table>

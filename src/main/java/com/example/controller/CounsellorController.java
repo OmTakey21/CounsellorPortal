@@ -88,87 +88,12 @@ public class CounsellorController {
 		
 		return "register";
 	}
-		
-	@GetMapping("/enquiry")
-	public String enquiry(Model model) {
-		EnquiriesDto enqDto=new EnquiriesDto();
-		
-		model.addAttribute("enquiry", enqDto);
-		
-		return "enquiryPage";
-	}
 	
-	@PostMapping("/enquiry")
-	public String addEnquiries(@ModelAttribute("enquiry") EnquiriesDto enqDto,HttpServletRequest req,Model model) {
-		
-		HttpSession session=req.getSession(false);
-		
-		Long cid=(Long)session.getAttribute("cid");
-		
-		boolean flag=enqService.upsertEnquiries(enqDto, cid);
-		
-		if(flag) {
-			model.addAttribute("smsg", "Enquiry added successfully");
-		}
-		else {
-			model.addAttribute("emsg", "Enquiry not added");
-		}
-		
-		model.addAttribute("enquiry", new EnquiriesDto());
-		
-		return "enquiryPage";
-	}
-	
-	@GetMapping("/enquiries")
-	public String viewEnquiries(HttpServletRequest req,Model model) {
+	@GetMapping("/logout")
+	public String logout(HttpServletRequest req) {
 		HttpSession session=req.getSession();
-		
-		Long cid=(Long)session.getAttribute("cid");
-		
-		List<EnquiriesDto> lstEnquiries=enqService.viewEnquiries(cid);
-		
-		model.addAttribute("enquiries",lstEnquiries);
-		model.addAttribute("enqDto", new EnquiriesDto());
-	
-		return "viewEnquiries";
+		session.invalidate();
+		return "redirect:index";
 	}
-	
-	@PostMapping("/filter")
-	public String filterEnquiries(@ModelAttribute("enqDto") EnquiriesDto enqDto,HttpServletRequest req,Model model) {
-		HttpSession session=req.getSession();
 		
-		Long cid=(Long)session.getAttribute("cid");
-		
-		List<EnquiriesDto> lstEnquiries=enqService.filterEnquiries(enqDto, cid);
-		
-		
-//		checking for enqId
-		
-//		for(EnquiriesDto enq:lstEnquiries) {
-//			System.out.println(enq.getEnqId());
-//		}
-		
-		model.addAttribute("enquiries", lstEnquiries);
-		
-		for(EnquiriesDto enq:lstEnquiries) {
-		session.setAttribute("enqId", enq.getEnqId());
-		}
-		
-		model.addAttribute("enqDto", enqDto);
-		
-		return "viewEnquiries";
-	}
-	
-	@GetMapping("/edit")
-	public String edit(@ModelAttribute("enqDto") EnquiriesDto enqDto,HttpServletRequest req,Model model) {
-	HttpSession session= req.getSession();
-		
-	Long eid=(Long)session.getAttribute("enqId");	
-		
-	enqDto=enqService.getById(eid);
-	
-	model.addAttribute("enqDto", enqDto);
-	
-	return "redirect:enquiry";
-	}
 }
